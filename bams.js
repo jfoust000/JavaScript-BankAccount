@@ -203,7 +203,7 @@ while (Number(userSelection) != 4) {
                 if (accounts[i].acctNum === Number(acct)) {
 
                     accounts[i].deposit(Number(depositAmt));
-                    console.log(`Transaction successful!`);
+                    console.log(`\n\nTransaction successful!`);
 
                 } 
 
@@ -271,8 +271,17 @@ while (Number(userSelection) != 4) {
 
                 if (accounts[i].acctNum === Number(acct)) {
 
-                    accounts[i].withdraw(Number(withdrawAmt));
-                    console.log(`Transaction successful!`);
+                    if (accounts[i].bal - withdrawAmt < 0) {
+
+                        console.log(`\n\nInsuffiecient Funds!`);
+
+                    } else {
+
+                        accounts[i].withdraw(Number(withdrawAmt));
+                        console.log(`\n\nTransaction successful!`);
+
+                    }
+                    
 
                 }
 
@@ -296,7 +305,7 @@ console.log(`Thank you for using the Bank Accout Management System, have a great
 
     for (let i = 0; i < accounts.length; i++) {
 
-        console.log(`Account Number: ${accounts[i].acctNum}\nAccount Holder: ${accounts[i].acctHolder}\nBalance: $${accounts[i].bal}\n\n`);
+        console.log(`Account Number: ${accounts[i].acctNum}\nAccount Holder: ${accounts[i].acctHolder}\nBalance: $${accounts[i].bal.toFixed(2)}\n\n`);
 
     }
 
